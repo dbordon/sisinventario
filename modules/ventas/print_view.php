@@ -18,7 +18,7 @@
                                                         $total_venta = $data['total_venta'];
                                                         $usuario = $data['name_user'];}
             //Detalle de compra
-            $detalle_compra = mysqli_query($mysqli, "SELECT * FROM v_det_compra WHERE cod_compra =$codigo ")
+            $detalle_venta = mysqli_query($mysqli, "SELECT * FROM v_det_venta WHERE cod_venta =$codigo ")
                                                         or die('Error'.mysqli_error($mysqli));
 
         }
@@ -28,7 +28,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title> Factura de compra</title>
+        <title> Factura de Venta</title>
     </head>
     <body>
         <div align='center'>
@@ -53,12 +53,12 @@
                     </thead>
                     <tbody>
                         <?php 
-                            while ($data2 = mysqli_fetch_assoc($detalle_compra)){
+                            while ($data2 = mysqli_fetch_assoc($detalle_venta)){
                                 $t_p_descrip = $data2['t_p_descrip'];
                                 $p_descrip = $data2['p_descrip'];
                                 $u_medida = $data2['u_descrip'];
-                                $precio = $data2['precio'];
-                                $cantidad = $data2['cantidad'];
+                                $precio = $data2['det_precio_unit'];
+                                $cantidad = $data2['det_cantidad'];
 
                                 echo "<tr>
                                         <td width='100' align='left'>$t_p_descrip</td>

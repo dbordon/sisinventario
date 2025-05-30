@@ -74,7 +74,8 @@ session_start();
       <header class="main-header">
         <!-- 1-Logo CREAR START-->
         <a href="?module=start" class="logo">
-          <img src="assets/img/logo_2019.jpg" width="90%" alt="Logo" > 
+          <b>Sysinventario</b>
+          <!-- <img src="assets/img/logo_2019.jpg" width="90%" alt="Logo" >  -->
         </a> 
    
         <!-- 2- Sidebar Menu-->

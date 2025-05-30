@@ -48,7 +48,9 @@
                                             while ($data_deposito = mysqli_fetch_assoc($query_deposito)){
                                                 echo "<option value=\"$data_deposito[cod_tipo_prod]\">$data_deposito[t_p_descrip]</option>"; 
                                             }
+
                                         ?>
+                                        <option value="">Seleccione un tipo de producto </option>
                                     </select>
                                 </div>
                             </div>

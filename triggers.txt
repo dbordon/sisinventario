@@ -1,0 +1,53 @@
+DELIMITER $$
+
+USE `sysweb`$$
+
+DROP TRIGGER /*!50032 IF EXISTS */ `borrar_temp`$$
+
+CREATE
+    /*!50017 DEFINER = 'root'@'localhost' */
+    TRIGGER `borrar_temp` AFTER INSERT ON `compra` 
+    FOR EACH ROW BEGIN
+   DELETE FROM tmp;
+    END;
+$$
+
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+
+USE `sysweb`$$
+
+DROP TRIGGER /*!50032 IF EXISTS */ `borrar_temp2`$$
+
+CREATE
+    /*!50017 DEFINER = 'root'@'localhost' */
+    TRIGGER `borrar_temp2` AFTER INSERT ON `venta` 
+    FOR EACH ROW BEGIN
+   DELETE FROM tmp;
+    END;
+$$
+
+DELIMITER ;
+
+
+
+DELIMITER $$
+
+USE `sysweb`$$
+
+DROP TRIGGER /*!50032 IF EXISTS */ `incrementar_contador_actualizaciones`$$
+
+CREATE
+    /*!50017 DEFINER = 'root'@'localhost' */
+    TRIGGER `incrementar_contador_actualizaciones` BEFORE UPDATE ON `stock` 
+    FOR EACH ROW BEGIN
+    -- Incrementar el contador de actualizaciones en 1 antes de realizar la actualización
+    SET NEW.contador_actualizaciones = OLD.contador_actualizaciones + 1;
+END;
+$$
+
+DELIMITER ;

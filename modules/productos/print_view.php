@@ -1,4 +1,4 @@
-<?php 
+<?php /*
 require_once "../../config/database.php";
 
 $query = mysqli_query($mysqli, "SELECT cod_estante, descrip_estante, sec.cod_seccion, sec.descrip_seccion, dep.cod_deposito, dep.descrip
@@ -7,14 +7,14 @@ WHERE es.cod_seccion =  sec.cod_seccion
 AND  sec.cod_deposito = dep.cod_deposito")
     or die('Error'.mysqli_error($mysqli));
 
-$count = mysqli_num_rows($query);    
+$count = mysqli_num_rows($query);    */
 ?>
 
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Reporte de Ciudad</title>
+        <title>Reporte de Producto</title>
         <link rel="stylesheet" type="text/css" href="../../assets/img/favicon.ico">
     </head>
     <body>
@@ -22,7 +22,7 @@ $count = mysqli_num_rows($query);
             <img src="../../images/asuncion.jpg">
         </div>
         <div>
-            Reporte de Estantes
+             Reportes de Productos
         </div>
         <div align="center">
             Cantidad: <?php echo $count; ?>

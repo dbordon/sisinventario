@@ -6,7 +6,7 @@ use Spipu\Html2Pdf\Html2Pdf; //Barras invertidas alt + 92 \
 ob_start();
 include 'print_view.php';
 $content = ob_get_clean();
-$nombre = "reporte_estante.pdf";
+$nombre = "reporte_productos.pdf";
 
 $html2pdf = new Html2Pdf ('P','A4', 'es');
 $html2pdf->pdf->SetDisplayMode('fullpage');

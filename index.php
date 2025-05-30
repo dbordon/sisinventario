@@ -27,7 +27,9 @@
   <br>
     <div class="login-box">
       <div style="color:#3c8dbc" class="login-logo">
-        <img style="margin-top:-15px" src="assets/img/favicon.ico" alt="Logo" height="50"> <b>Sysinvetario </b>
+      <b>Sysinvetario </b>
+        <!-- <img style="margin-top:-15px" src="assets/img/favicon.ico" alt="Logo" height="50">  -->
+        
       </div><!-- /.login-logo -->
       <?php  
  
