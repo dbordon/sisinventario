@@ -14,9 +14,10 @@ else {
             $u_medida = $_POST['u_medida'];
             $p_descrip = $_POST['p_descrip'];
             $precio = $_POST['precio'];
+            $cproducto = $_POST['cproducto'];
 
-            $query = mysqli_query($mysqli, "INSERT INTO producto (cod_producto, cod_tipo_prod, id_u_medida, p_descrip, precio)
-            VALUES ($codigo, $t_producto, $u_medida, '$p_descrip',$precio)") or die('Error'.mysqli_error($mysqli));
+            $query = mysqli_query($mysqli, "INSERT INTO producto (cod_producto, cod_tipo_prod, id_u_medida, p_descrip, precio, cproducto)
+            VALUES ($codigo, $t_producto, $u_medida, '$p_descrip',$precio,'$cproducto')") or die('Error'.mysqli_error($mysqli));
             
             if($query){
                 header("Location: ../../main.php?module=productos&alert=1");
@@ -34,11 +35,13 @@ else {
                 $u_medida = $_POST['u_medida'];
                 $p_descrip = $_POST['p_descrip'];
                 $precio = $_POST['precio'];
+                $cproducto = $_POST['cproducto'];
                 
                 $query = mysqli_query($mysqli, "UPDATE producto SET p_descrip = '$p_descrip',
                                                                     precio = '$precio',
                                                                     cod_tipo_prod = $t_producto,
-                                                                    id_u_medida = $u_medida
+                                                                    id_u_medida = $u_medida,
+                                                                    cproducto = '$cproducto'
                                                                     WHERE cod_producto = $codigo")
                                                                     or die('Error'.mysqli_error($mysqli));
 

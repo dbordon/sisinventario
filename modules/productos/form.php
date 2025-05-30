@@ -69,7 +69,14 @@
                                         ?>
                                     </select>
                                 </div>
-                            </div>   
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Código de producto</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="cproducto" pleaceholder="Ingresa un código de producto" required>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Producto</label>
@@ -105,7 +112,7 @@
     <?php }
     elseif($_GET['form']=='edit'){
       if(isset($_GET['id'])){
-          $query = mysqli_query($mysqli, "SELECT cod_producto, tp.cod_tipo_prod, t_p_descrip, um.id_u_medida, u_descrip, p_descrip, precio
+          $query = mysqli_query($mysqli, "SELECT cod_producto, tp.cod_tipo_prod, t_p_descrip, um.id_u_medida, u_descrip, p_descrip, precio, cproducto
 FROM	producto p, tipo_producto tp, u_medida um
 WHERE p.cod_tipo_prod=tp.cod_tipo_prod
 AND p.id_u_medida=um.id_u_medida AND cod_producto= '$_GET[id]'")
@@ -170,6 +177,13 @@ AND p.id_u_medida=um.id_u_medida AND cod_producto= '$_GET[id]'")
                                 </div>
                             </div>   
 
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label">Código de Producto</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="cproducto" pleaceholder="Ingresa un producto" required value="<?php echo $data['cproducto']; ?>">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Producto</label>
                                 <div class="col-sm-5">
@@ -183,6 +197,8 @@ AND p.id_u_medida=um.id_u_medida AND cod_producto= '$_GET[id]'")
                                     <input type="text" class="form-control" name="precio" pleaceholder="Ingresa un precio" required value="<?php echo $data['precio']; ?>">
                                 </div>
                             </div>
+
+                            
 
                             <div class="box-footer">
                                 <div class="form-group">

@@ -70,7 +70,7 @@
                         <tbody>
                             <?php 
                             $nro=1;
-                            $query = mysqli_query($mysqli, "SELECT cod_producto, tp.cod_tipo_prod, t_p_descrip, um.id_u_medida, u_descrip, p_descrip, precio
+                            $query = mysqli_query($mysqli, "SELECT cod_producto, tp.cod_tipo_prod, t_p_descrip, um.id_u_medida, u_descrip, p_descrip, precio, cproducto
                                                             FROM	producto p, tipo_producto tp, u_medida um
                                                             WHERE p.cod_tipo_prod=tp.cod_tipo_prod
                                                             AND p.id_u_medida=um.id_u_medida")
@@ -82,6 +82,7 @@
                                $u_descrip = $data['u_descrip'];
                                $p_descrip = $data['p_descrip'];
                                $precio = $data['precio'];
+                               $cproducto = $data['cproducto'];
 
 
                                echo "<tr>
