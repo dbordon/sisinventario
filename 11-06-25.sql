@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.3.0 (64 bit)
-MySQL - 8.3.0 : Database - sysweb
+MySQL - 9.1.0 : Database - sysweb
 *********************************************************************
 */
 
@@ -30,16 +30,12 @@ CREATE TABLE `ciudad` (
 
 /*Data for the table `ciudad` */
 
-LOCK TABLES `ciudad` WRITE;
-
 insert  into `ciudad`(`cod_ciudad`,`descrip_ciudad`,`id_departamento`) values 
 (1,'Asunción',1),
 (2,'San Lorenzo',1),
 (3,'Capiatá',1),
 (4,'Itá',1),
 (5,'Fernando de la mora',1);
-
-UNLOCK TABLES;
 
 /*Table structure for table `clientes` */
 
@@ -59,13 +55,9 @@ CREATE TABLE `clientes` (
 
 /*Data for the table `clientes` */
 
-LOCK TABLES `clientes` WRITE;
-
 insert  into `clientes`(`id_cliente`,`ci_ruc`,`cli_nombre`,`cli_apellido`,`cli_direccion`,`cli_telefono`,`cod_ciudad`) values 
 (1,'4501296','Daniel','Bordon','Xxx',2114545,1),
 (2,'4512456','Juan','Romero','asdf',2323,1);
-
-UNLOCK TABLES;
 
 /*Table structure for table `compra` */
 
@@ -88,12 +80,8 @@ CREATE TABLE `compra` (
 
 /*Data for the table `compra` */
 
-LOCK TABLES `compra` WRITE;
-
 insert  into `compra`(`cod_compra`,`cod_proveedor`,`nro_factura`,`fecha`,`estado`,`cod_deposito`,`hora`,`total_compra`,`id_user`) values 
-(1,1,'232-323-2323232','2525-05-30','activo',1,'22:44:55',29475000,1);
-
-UNLOCK TABLES;
+(1,1,'232-323-2323232','2025-06-01','activo',1,'22:44:55',29475000,1);
 
 /*Table structure for table `departamento` */
 
@@ -107,16 +95,12 @@ CREATE TABLE `departamento` (
 
 /*Data for the table `departamento` */
 
-LOCK TABLES `departamento` WRITE;
-
 insert  into `departamento`(`id_departamento`,`dep_descripcion`) values 
 (1,'Central'),
 (2,'Cordillera'),
 (3,'Alto Paraná'),
 (4,'Amambay'),
 (5,'Boquerón');
-
-UNLOCK TABLES;
 
 /*Table structure for table `deposito` */
 
@@ -131,13 +115,9 @@ CREATE TABLE `deposito` (
 
 /*Data for the table `deposito` */
 
-LOCK TABLES `deposito` WRITE;
-
 insert  into `deposito`(`cod_deposito`,`descrip`,`direccion`) values 
 (1,'Central','Calle a'),
 (2,'Deposito 2','Calle b');
-
-UNLOCK TABLES;
 
 /*Table structure for table `det_venta` */
 
@@ -155,15 +135,21 @@ CREATE TABLE `det_venta` (
 
 /*Data for the table `det_venta` */
 
-LOCK TABLES `det_venta` WRITE;
-
 insert  into `det_venta`(`cod_producto`,`cod_venta`,`cod_deposito`,`det_precio_unit`,`det_cantidad`) values 
 (4,1,1,15000,1),
 (2,1,1,1500000,1),
 (3,1,1,200000,1),
-(1,1,1,250000,1);
-
-UNLOCK TABLES;
+(1,1,1,250000,1),
+(1,2,1,250000,10),
+(2,2,1,1500000,15),
+(3,2,1,200000,11),
+(4,2,1,15000,13),
+(5,2,1,56000,11),
+(1,3,1,250000,10000),
+(1,3,1,250000,1),
+(1,1,1,250000,10),
+(1,1,1,250000,1),
+(2,1,1,1500000,1);
 
 /*Table structure for table `detalle_compra` */
 
@@ -182,15 +168,12 @@ CREATE TABLE `detalle_compra` (
 
 /*Data for the table `detalle_compra` */
 
-LOCK TABLES `detalle_compra` WRITE;
-
 insert  into `detalle_compra`(`cod_producto`,`cod_compra`,`cod_deposito`,`precio`,`cantidad`) values 
-(4,1,1,15000,15),
-(1,1,1,250000,15),
+(4,1,1,15000,26),
+(1,1,1,250000,26),
 (2,1,1,1500000,15),
-(3,1,1,200000,15);
-
-UNLOCK TABLES;
+(3,1,1,200000,152),
+(5,1,1,250000,92);
 
 /*Table structure for table `estante` */
 
@@ -207,8 +190,6 @@ CREATE TABLE `estante` (
 
 /*Data for the table `estante` */
 
-LOCK TABLES `estante` WRITE;
-
 insert  into `estante`(`cod_estante`,`descrip_estante`,`cod_seccion`) values 
 (1,'SIN ASIGNAR ESTANTE',1),
 (2,'A2',1),
@@ -216,8 +197,6 @@ insert  into `estante`(`cod_estante`,`descrip_estante`,`cod_seccion`) values
 (4,'B1',2),
 (5,'B2',3),
 (6,'B3',2);
-
-UNLOCK TABLES;
 
 /*Table structure for table `producto` */
 
@@ -237,15 +216,12 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-LOCK TABLES `producto` WRITE;
-
 insert  into `producto`(`cod_producto`,`cod_tipo_prod`,`id_u_medida`,`p_descrip`,`precio`,`cproducto`) values 
 (1,1,1,'Tapa junta motor',250000,NULL),
 (2,1,3,'Faro derecho MERCEDES CLA',1500000,NULL),
 (3,1,3,'Luz led',200000,NULL),
-(4,2,5,'Producto 2',15000,NULL);
-
-UNLOCK TABLES;
+(4,2,5,'Producto 2',15000,NULL),
+(5,1,3,'Filtro de aceite',56000,NULL);
 
 /*Table structure for table `proveedor` */
 
@@ -262,12 +238,8 @@ CREATE TABLE `proveedor` (
 
 /*Data for the table `proveedor` */
 
-LOCK TABLES `proveedor` WRITE;
-
 insert  into `proveedor`(`cod_proveedor`,`razon_social`,`ruc`,`direccion`,`telefono`) values 
 (1,'Importadora','45454','EEUU',2547885);
-
-UNLOCK TABLES;
 
 /*Table structure for table `seccion` */
 
@@ -284,16 +256,12 @@ CREATE TABLE `seccion` (
 
 /*Data for the table `seccion` */
 
-LOCK TABLES `seccion` WRITE;
-
 insert  into `seccion`(`cod_seccion`,`descrip_seccion`,`cod_deposito`) values 
 (1,'SIN ASIGNAR SECCIÓN',1),
 (2,'Sección A',1),
 (3,'Sección B',2),
 (4,'Sección C',2),
 (5,'Sección C',1);
-
-UNLOCK TABLES;
 
 /*Table structure for table `stock` */
 
@@ -313,20 +281,18 @@ CREATE TABLE `stock` (
   KEY `fkuser` (`id_user`),
   CONSTRAINT `pkestante` FOREIGN KEY (`cod_estante`) REFERENCES `estante` (`cod_estante`) ON UPDATE CASCADE,
   CONSTRAINT `pkproducto` FOREIGN KEY (`cod_producto`) REFERENCES `producto` (`cod_producto`) ON UPDATE CASCADE,
-  CONSTRAINT `pkseccion` FOREIGN KEY (`cod_seccion`) REFERENCES `seccion` (`cod_seccion`) ON UPDATE CASCADE
+  CONSTRAINT `pkseccion` FOREIGN KEY (`cod_seccion`) REFERENCES `seccion` (`cod_seccion`) ON UPDATE CASCADE,
+  CONSTRAINT `no_stock_neg` CHECK ((`cantidad` >= 0))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `stock` */
 
-LOCK TABLES `stock` WRITE;
-
 insert  into `stock`(`cod_deposito`,`cod_producto`,`cantidad`,`cod_seccion`,`cod_estante`,`id_user`,`contador_actualizaciones`) values 
-(1,3,14,1,1,NULL,1),
-(1,2,14,1,1,NULL,1),
-(1,1,14,1,1,NULL,1),
-(1,4,14,1,1,NULL,1);
-
-UNLOCK TABLES;
+(1,3,3,1,1,NULL,2),
+(1,2,5,1,1,NULL,4),
+(1,1,2,1,1,NULL,4),
+(1,4,1,1,1,NULL,2),
+(1,5,11,1,1,NULL,0);
 
 /*Table structure for table `tipo_producto` */
 
@@ -340,13 +306,9 @@ CREATE TABLE `tipo_producto` (
 
 /*Data for the table `tipo_producto` */
 
-LOCK TABLES `tipo_producto` WRITE;
-
 insert  into `tipo_producto`(`cod_tipo_prod`,`t_p_descrip`) values 
 (1,'Repuestos'),
 (2,'Accesorios');
-
-UNLOCK TABLES;
 
 /*Table structure for table `tmp` */
 
@@ -359,13 +321,9 @@ CREATE TABLE `tmp` (
   `precio_tmp` int DEFAULT NULL,
   `session_id` varchar(765) DEFAULT NULL,
   KEY `id_tmp` (`id_tmp`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `tmp` */
-
-LOCK TABLES `tmp` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `u_medida` */
 
@@ -379,16 +337,12 @@ CREATE TABLE `u_medida` (
 
 /*Data for the table `u_medida` */
 
-LOCK TABLES `u_medida` WRITE;
-
 insert  into `u_medida`(`id_u_medida`,`u_descrip`) values 
 (1,'Kg'),
 (2,'Cc'),
 (3,'Unidades'),
 (4,'M'),
 (5,'M3');
-
-UNLOCK TABLES;
 
 /*Table structure for table `usuarios` */
 
@@ -408,15 +362,11 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
-LOCK TABLES `usuarios` WRITE;
-
 insert  into `usuarios`(`id_user`,`username`,`name_user`,`password`,`email`,`telefono`,`foto`,`permisos_acceso`,`status`) values 
 (1,'szarate','Sindy Jeannette Zárate Sosa','0cc175b9c0f1b6a831c399e269772661','daniel.bordon.py@gmail.com','0985887293','S.jpg','Super Admin','activo'),
 (2,'ucompras','Usuario de compras','0cc175b9c0f1b6a831c399e269772661','daniel.bordon.py@gmail.com','0983366699','user-default.png','Compras','activo'),
 (3,'uventas','Usuario de ventas','0cc175b9c0f1b6a831c399e269772661','daniel.bordon.py@gmail.com','0983366699','user-default.png','Ventas','activo'),
 (4,'monitoreo','Personal de monitoreo','0cc175b9c0f1b6a831c399e269772661','daniel.bordon.py@gmail.com','09816549687','S.jpg','monitoreo','activo');
-
-UNLOCK TABLES;
 
 /*Table structure for table `venta` */
 
@@ -429,7 +379,7 @@ CREATE TABLE `venta` (
   `total_venta` int NOT NULL,
   `estado` varchar(15) NOT NULL,
   `hora` time NOT NULL,
-  `nro_factura` int DEFAULT NULL,
+  `nro_factura` varchar(25) DEFAULT NULL,
   `cod_deposito` int DEFAULT NULL,
   PRIMARY KEY (`cod_venta`),
   KEY `clientes_venta_fk` (`id_cliente`)
@@ -437,12 +387,8 @@ CREATE TABLE `venta` (
 
 /*Data for the table `venta` */
 
-LOCK TABLES `venta` WRITE;
-
 insert  into `venta`(`cod_venta`,`id_cliente`,`fecha`,`total_venta`,`estado`,`hora`,`nro_factura`,`cod_deposito`) values 
-(1,2,'2525-05-30',1965000,'activo','22:45:54',2147483647,1);
-
-UNLOCK TABLES;
+(1,1,'2525-06-11',1750000,'activo','14:32:59','001-001-0000001',1);
 
 /* Trigger structure for table `compra` */
 
@@ -450,7 +396,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `borrar_temp` */$$
 
-/*!50003 CREATE */ /*!50003 TRIGGER `borrar_temp` AFTER INSERT ON `compra` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `borrar_temp` AFTER INSERT ON `compra` FOR EACH ROW BEGIN
    DELETE FROM tmp;
     END */$$
 
@@ -463,7 +409,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `incrementar_contador_actualizaciones` */$$
 
-/*!50003 CREATE */ /*!50003 TRIGGER `incrementar_contador_actualizaciones` BEFORE UPDATE ON `stock` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `incrementar_contador_actualizaciones` BEFORE UPDATE ON `stock` FOR EACH ROW BEGIN
     -- Incrementar el contador de actualizaciones en 1 antes de realizar la actualización
     SET NEW.contador_actualizaciones = OLD.contador_actualizaciones + 1;
 END */$$
@@ -477,7 +423,7 @@ DELIMITER $$
 
 /*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `borrar_temp2` */$$
 
-/*!50003 CREATE */ /*!50003 TRIGGER `borrar_temp2` AFTER INSERT ON `venta` FOR EACH ROW BEGIN
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `borrar_temp2` AFTER INSERT ON `venta` FOR EACH ROW BEGIN
    DELETE FROM tmp;
     END */$$
 
@@ -644,7 +590,7 @@ DROP TABLE IF EXISTS `v_ventas`;
  `total_venta` int ,
  `estado` varchar(15) ,
  `hora` time ,
- `nro_factura` int 
+ `nro_factura` varchar(25) 
 )*/;
 
 /*View structure for view v_clientes */
@@ -652,56 +598,56 @@ DROP TABLE IF EXISTS `v_ventas`;
 /*!50001 DROP TABLE IF EXISTS `v_clientes` */;
 /*!50001 DROP VIEW IF EXISTS `v_clientes` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_clientes` AS select `cli`.`id_cliente` AS `id_cliente`,`dep`.`id_departamento` AS `id_departamento`,`dep`.`dep_descripcion` AS `dep_descripcion`,`ciu`.`cod_ciudad` AS `cod_ciudad`,`ciu`.`descrip_ciudad` AS `descrip_ciudad`,`cli`.`ci_ruc` AS `ci_ruc`,`cli`.`cli_nombre` AS `cli_nombre`,`cli`.`cli_apellido` AS `cli_apellido`,`cli`.`cli_direccion` AS `cli_direccion`,`cli`.`cli_telefono` AS `cli_telefono` from ((`clientes` `cli` join `departamento` `dep`) join `ciudad` `ciu`) where ((`ciu`.`id_departamento` = `dep`.`id_departamento`) and (`cli`.`cod_ciudad` = `ciu`.`cod_ciudad`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_clientes` AS select `cli`.`id_cliente` AS `id_cliente`,`dep`.`id_departamento` AS `id_departamento`,`dep`.`dep_descripcion` AS `dep_descripcion`,`ciu`.`cod_ciudad` AS `cod_ciudad`,`ciu`.`descrip_ciudad` AS `descrip_ciudad`,`cli`.`ci_ruc` AS `ci_ruc`,`cli`.`cli_nombre` AS `cli_nombre`,`cli`.`cli_apellido` AS `cli_apellido`,`cli`.`cli_direccion` AS `cli_direccion`,`cli`.`cli_telefono` AS `cli_telefono` from ((`clientes` `cli` join `departamento` `dep`) join `ciudad` `ciu`) where ((`ciu`.`id_departamento` = `dep`.`id_departamento`) and (`cli`.`cod_ciudad` = `ciu`.`cod_ciudad`)) */;
 
 /*View structure for view v_compra */
 
 /*!50001 DROP TABLE IF EXISTS `v_compra` */;
 /*!50001 DROP VIEW IF EXISTS `v_compra` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`prov`.`cod_proveedor` AS `cod_proveedor`,`prov`.`razon_social` AS `razon_social`,`dep`.`cod_deposito` AS `cod_deposito`,`dep`.`descrip` AS `descrip`,`comp`.`nro_factura` AS `nro_factura`,`comp`.`fecha` AS `fecha`,`comp`.`hora` AS `hora`,`comp`.`total_compra` AS `total_compra`,`usu`.`id_user` AS `id_user`,`usu`.`name_user` AS `name_user`,`comp`.`estado` AS `estado` from (((`compra` `comp` join `proveedor` `prov`) join `deposito` `dep`) join `usuarios` `usu`) where ((`comp`.`cod_proveedor` = `prov`.`cod_proveedor`) and (`comp`.`cod_deposito` = `dep`.`cod_deposito`) and (`comp`.`id_user` = `usu`.`id_user`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`prov`.`cod_proveedor` AS `cod_proveedor`,`prov`.`razon_social` AS `razon_social`,`dep`.`cod_deposito` AS `cod_deposito`,`dep`.`descrip` AS `descrip`,`comp`.`nro_factura` AS `nro_factura`,`comp`.`fecha` AS `fecha`,`comp`.`hora` AS `hora`,`comp`.`total_compra` AS `total_compra`,`usu`.`id_user` AS `id_user`,`usu`.`name_user` AS `name_user`,`comp`.`estado` AS `estado` from (((`compra` `comp` join `proveedor` `prov`) join `deposito` `dep`) join `usuarios` `usu`) where ((`comp`.`cod_proveedor` = `prov`.`cod_proveedor`) and (`comp`.`cod_deposito` = `dep`.`cod_deposito`) and (`comp`.`id_user` = `usu`.`id_user`)) */;
 
 /*View structure for view v_compras */
 
 /*!50001 DROP TABLE IF EXISTS `v_compras` */;
 /*!50001 DROP VIEW IF EXISTS `v_compras` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_compras` AS select `comp`.`cod_compra` AS `cod_compra`,`prov`.`cod_proveedor` AS `cod_proveedor`,`prov`.`razon_social` AS `razon_social`,`dep`.`cod_deposito` AS `cod_deposito`,`dep`.`descrip` AS `descrip`,`comp`.`nro_factura` AS `nro_factura`,`comp`.`fecha` AS `fecha`,`comp`.`hora` AS `hora`,`comp`.`total_compra` AS `total_compra`,`usu`.`id_user` AS `id_user`,`usu`.`name_user` AS `name_user`,`comp`.`estado` AS `estado` from (((`compra` `comp` join `proveedor` `prov`) join `deposito` `dep`) join `usuarios` `usu`) where ((`comp`.`cod_proveedor` = `prov`.`cod_proveedor`) and (`comp`.`cod_deposito` = `dep`.`cod_deposito`) and (`comp`.`id_user` = `usu`.`id_user`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_compras` AS select `comp`.`cod_compra` AS `cod_compra`,`prov`.`cod_proveedor` AS `cod_proveedor`,`prov`.`razon_social` AS `razon_social`,`dep`.`cod_deposito` AS `cod_deposito`,`dep`.`descrip` AS `descrip`,`comp`.`nro_factura` AS `nro_factura`,`comp`.`fecha` AS `fecha`,`comp`.`hora` AS `hora`,`comp`.`total_compra` AS `total_compra`,`usu`.`id_user` AS `id_user`,`usu`.`name_user` AS `name_user`,`comp`.`estado` AS `estado` from (((`compra` `comp` join `proveedor` `prov`) join `deposito` `dep`) join `usuarios` `usu`) where ((`comp`.`cod_proveedor` = `prov`.`cod_proveedor`) and (`comp`.`cod_deposito` = `dep`.`cod_deposito`) and (`comp`.`id_user` = `usu`.`id_user`)) */;
 
 /*View structure for view v_det_compra */
 
 /*!50001 DROP TABLE IF EXISTS `v_det_compra` */;
 /*!50001 DROP VIEW IF EXISTS `v_det_compra` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_det_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`precio` AS `precio`,`det`.`cantidad` AS `cantidad` from ((((`detalle_compra` `det` join `compra` `comp`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_compra` = `comp`.`cod_compra`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_det_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`precio` AS `precio`,`det`.`cantidad` AS `cantidad` from ((((`detalle_compra` `det` join `compra` `comp`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_compra` = `comp`.`cod_compra`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
 
 /*View structure for view v_det_venta */
 
 /*!50001 DROP TABLE IF EXISTS `v_det_venta` */;
 /*!50001 DROP VIEW IF EXISTS `v_det_venta` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_det_venta` AS select `vent`.`cod_venta` AS `cod_venta`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`det_precio_unit` AS `det_precio_unit`,`det`.`det_cantidad` AS `det_cantidad` from ((((`det_venta` `det` join `venta` `vent`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_venta` = `vent`.`cod_venta`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_det_venta` AS select `vent`.`cod_venta` AS `cod_venta`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`det_precio_unit` AS `det_precio_unit`,`det`.`det_cantidad` AS `det_cantidad` from ((((`det_venta` `det` join `venta` `vent`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_venta` = `vent`.`cod_venta`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
 
 /*View structure for view v_detalle_compra */
 
 /*!50001 DROP TABLE IF EXISTS `v_detalle_compra` */;
 /*!50001 DROP VIEW IF EXISTS `v_detalle_compra` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_detalle_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`precio` AS `precio`,`det`.`cantidad` AS `cantidad` from ((((`detalle_compra` `det` join `compra` `comp`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_compra` = `comp`.`cod_compra`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_detalle_compra` AS select `comp`.`cod_compra` AS `cod_compra`,`pro`.`cod_producto` AS `cod_producto`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`det`.`precio` AS `precio`,`det`.`cantidad` AS `cantidad` from ((((`detalle_compra` `det` join `compra` `comp`) join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) where ((`det`.`cod_compra` = `comp`.`cod_compra`) and (`det`.`cod_producto` = `pro`.`cod_producto`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`)) */;
 
 /*View structure for view v_stock */
 
 /*!50001 DROP TABLE IF EXISTS `v_stock` */;
 /*!50001 DROP VIEW IF EXISTS `v_stock` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_stock` AS select `pro`.`cod_producto` AS `cod_producto`,`dep`.`cod_deposito` AS `cod_deposito`,`sec`.`cod_seccion` AS `cod_seccion`,`sec`.`descrip_seccion` AS `descrip_seccion`,`est`.`cod_estante` AS `cod_estante`,`est`.`descrip_estante` AS `descrip_estante`,`dep`.`descrip` AS `descrip`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`st`.`contador_actualizaciones` AS `contador_actualizaciones`,`st`.`cantidad` AS `cantidad` from ((((((`stock` `st` join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) join `deposito` `dep`) join `seccion` `sec`) join `estante` `est`) where ((`st`.`cod_producto` = `pro`.`cod_producto`) and (`st`.`cod_deposito` = `dep`.`cod_deposito`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`) and (`st`.`cod_seccion` = `sec`.`cod_seccion`) and (`st`.`cod_estante` = `est`.`cod_estante`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_stock` AS select `pro`.`cod_producto` AS `cod_producto`,`dep`.`cod_deposito` AS `cod_deposito`,`sec`.`cod_seccion` AS `cod_seccion`,`sec`.`descrip_seccion` AS `descrip_seccion`,`est`.`cod_estante` AS `cod_estante`,`est`.`descrip_estante` AS `descrip_estante`,`dep`.`descrip` AS `descrip`,`tpro`.`t_p_descrip` AS `t_p_descrip`,`pro`.`p_descrip` AS `p_descrip`,`um`.`u_descrip` AS `u_descrip`,`st`.`contador_actualizaciones` AS `contador_actualizaciones`,`st`.`cantidad` AS `cantidad` from ((((((`stock` `st` join `producto` `pro`) join `tipo_producto` `tpro`) join `u_medida` `um`) join `deposito` `dep`) join `seccion` `sec`) join `estante` `est`) where ((`st`.`cod_producto` = `pro`.`cod_producto`) and (`st`.`cod_deposito` = `dep`.`cod_deposito`) and (`pro`.`cod_tipo_prod` = `tpro`.`cod_tipo_prod`) and (`pro`.`id_u_medida` = `um`.`id_u_medida`) and (`st`.`cod_seccion` = `sec`.`cod_seccion`) and (`st`.`cod_estante` = `est`.`cod_estante`)) */;
 
 /*View structure for view v_ventas */
 
 /*!50001 DROP TABLE IF EXISTS `v_ventas` */;
 /*!50001 DROP VIEW IF EXISTS `v_ventas` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_ventas` AS select `venta`.`cod_venta` AS `cod_venta`,`clientes`.`id_cliente` AS `id_cliente`,`clientes`.`ci_ruc` AS `ci_ruc`,`clientes`.`cli_nombre` AS `cli_nombre`,`clientes`.`cli_apellido` AS `cli_apellido`,`clientes`.`cli_direccion` AS `cli_direccion`,`clientes`.`cli_telefono` AS `cli_telefono`,`ciudad`.`cod_ciudad` AS `cod_ciudad`,`ciudad`.`descrip_ciudad` AS `descrip_ciudad`,`deposito`.`cod_deposito` AS `cod_deposito`,`deposito`.`descrip` AS `descrip`,`venta`.`fecha` AS `fecha`,`venta`.`total_venta` AS `total_venta`,`venta`.`estado` AS `estado`,`venta`.`hora` AS `hora`,`venta`.`nro_factura` AS `nro_factura` from (((`venta` join `clientes`) join `ciudad`) join `deposito`) where ((`venta`.`id_cliente` = `clientes`.`id_cliente`) and (`clientes`.`cod_ciudad` = `ciudad`.`cod_ciudad`) and (`venta`.`cod_deposito` = `deposito`.`cod_deposito`)) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ventas` AS select `venta`.`cod_venta` AS `cod_venta`,`clientes`.`id_cliente` AS `id_cliente`,`clientes`.`ci_ruc` AS `ci_ruc`,`clientes`.`cli_nombre` AS `cli_nombre`,`clientes`.`cli_apellido` AS `cli_apellido`,`clientes`.`cli_direccion` AS `cli_direccion`,`clientes`.`cli_telefono` AS `cli_telefono`,`ciudad`.`cod_ciudad` AS `cod_ciudad`,`ciudad`.`descrip_ciudad` AS `descrip_ciudad`,`deposito`.`cod_deposito` AS `cod_deposito`,`deposito`.`descrip` AS `descrip`,`venta`.`fecha` AS `fecha`,`venta`.`total_venta` AS `total_venta`,`venta`.`estado` AS `estado`,`venta`.`hora` AS `hora`,`venta`.`nro_factura` AS `nro_factura` from (((`venta` join `clientes`) join `ciudad`) join `deposito`) where ((`venta`.`id_cliente` = `clientes`.`id_cliente`) and (`clientes`.`cod_ciudad` = `ciudad`.`cod_ciudad`) and (`venta`.`cod_deposito` = `deposito`.`cod_deposito`)) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
